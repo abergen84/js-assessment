@@ -1,21 +1,37 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define(function() {
+    "use strict";
   return {
     indexOf : function(arr, item) {
-
+        for (var i = 0; i < arr.length; i++){
+            if (arr[i] === item){
+                return i;
+            }
+        }
+            return -1;
     },
 
     sum : function(arr) {
+        var total = 0;
 
+        for (var i = 0; i < arr.length; i++){
+            total += arr[i];
+        }
+        return total;
     },
 
     remove : function(arr, item) {
-
+        for (var i = 0; i < arr.length; i++){
+            if (arr[i] === item){
+                arr.splice(i, 1)
+            }
+        }
+        return arr;
     },
 
     removeWithoutCopy : function(arr, item) {
-
+        
     },
 
     append : function(arr, item) {
