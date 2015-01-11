@@ -37,7 +37,7 @@ define(function() {
 
         parseInt: function(num) {
             "use strict";
-            return parseInt(num,10);
+            return parseInt(num,10);  //have to supply 10 as argument as part of parseInt.
         },
 
         identity: function(val1, val2) {
