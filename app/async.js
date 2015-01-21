@@ -2,14 +2,14 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define([ 'jquery' ], function($) {
   return {
-    async : function(value) {
+    async : function(value) {                   //set a variable to equal jQuery deferred
     	var def = $.Deferred();
 
-    	setTimeout(function(){
+    	setTimeout(function(){                 //resolve the deferred object
     		def.resolve(value);
     	}, 10);
 
-    	return def.promise();
+    	return def.promise();                  //execute the promise
 
     },
 
@@ -17,13 +17,15 @@ define([ 'jquery' ], function($) {
     	var def = $.Deferred();
     	var peopleInArray = [];
 
-    	$.getJSON(url).then(function(data){
-    		data['people'].forEach(function(x){
-    			peopleInArray.push(x.name);
+    	//debugger;
+        $.getJSON(url).then(function(data){         //jQuery promise function for getting JSON object from server, then once you obtain the info
+    		data['people'].forEach(function(x){       //for each element in the people property from the data obtained from the server,
+    			peopleInArray.push(x.name);          //push their name into the empty array you defined called peopleInArray.  
     		})
-    		def.resolve(peopleInArray.sort());
+    		def.resolve(peopleInArray.sort());        //resolve the promise, sorting people in the array
     	})
-    	return def.promise();
+    	return def.promise();                          //execute the promise
+
     }
   };
 });
