@@ -81,15 +81,20 @@ define(function() {
     },
 
     duplicates : function(arr) {
-        //var sorted = arr.sort();
-        var results = [];
-
-        for (var i = 0; i < arr.length - 1; i++){
-            if (arr[i+1] === arr[i]){
-                results.push(arr[i]);
-            }
+        var counts = {}
+        
+        for (var i = 0; i < arr.length; i++) {
+        var elt = arr[i];
+        counts[elt] = 1 + (counts[elt] || 0);
+      }
+      
+      var dups = [];
+      for (var elt in counts) {
+        if (counts[elt] > 1) {
+          dups.push(elt);
         }
-        return results;
+      }
+      return dups;
     },
 
     square : function(arr) {
