@@ -3,15 +3,15 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function() {
   return {
     argsAsArray : function(fn, arr) {
-        return fn.apply(this, arr);
+        return fn.apply(null, arr);         //the apply method takes a function and applies an array to it
     },
 
-    speak : function(fn, obj) {
-        return fn.call(obj);
+    speak : function(fn, obj) {             //the call method is like apply, but accepts an argument list, not just a single array of 
+        return fn.call(obj);                //arguments
     },
 
-    functionFunction : function(str) {
-        return function(str2){
+    functionFunction : function(str) {      //just call a function within a function, giving the new function a parameter for the 2nd string,
+        return function(str2){              //and then combining them
             return str + ', ' + str2;
         }
     },
@@ -28,7 +28,7 @@ define(function() {
         return res;
     },
 
-    partial : function(fn, str1, str2) {
+    partial : function(fn, str1, str2) {        
         return function(x){
             return fn(str1, str2, x);
         }
@@ -36,10 +36,10 @@ define(function() {
 
     useArguments : function() {
         var sum = 0;
-        for (var i = 0; i < arguments.length; i++){
-            sum += arguments[i];
-        }
-            return sum;
+        for (var i = 0; i < arguments.length; i++){  //since no definitive array is given, can use the default arguments property that is part of JS
+            sum += arguments[i];                        //for every parameter given, it will add it to the sum variable. 
+        }                                               //here, "argument" represents a, b, c, d, etc. if given a, b, c, d, argument[0] = a
+            return sum;                                 //argument[1] = b, etc. 
     },
 
     callIt : function(fn) {
@@ -47,7 +47,7 @@ define(function() {
     },
 
     partialUsingArguments : function(fn) {
-        
+
     },
 
     curryIt : function(fn) {
