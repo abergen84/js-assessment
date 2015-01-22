@@ -3,13 +3,13 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function() {
   return {
     valueAtBit: function(num, bit) {
-        var mask = 1 << (bit - 1);
+        var mask = 1 << (bit - 1);    //bit shifting
 
         return (num & mask) ? 1 : 0;
     },
 
     base10: function(str) {
-        return parseInt(str, 2);
+        return parseInt(str, 2);    //easiest method to convert binary to a string
     },
 
     convertToBinary: function(num) {

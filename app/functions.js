@@ -43,8 +43,8 @@ define(function() {
     },
 
     callIt : function(fn) {
-        return fn.apply(null, Array.prototype.slice.call(arguments, 1));
-    },
+        return fn.apply(null, Array.prototype.slice.call(arguments, 1));   //slice can be used with call to to convert array-like objects
+    },                                                                      //and collections to a new Array.
 
     partialUsingArguments : function(fn) {
 
